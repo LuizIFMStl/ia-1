@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Scenario {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  options     Option[]
+}
+
+model Option {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  screnarioId String
+  scenario    Scenario @relation(fields: [screnarioId], references: [id])
+  scores      Score[]
+}
+
+model Criterion {
+  id        String   @id @default(uuid())
+  name      String
+  weight    Float
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  scores    Score[]
+}
+
+model Score {
+  id          String    @id @default(uuid())
+  optionId    String
+  criterionId String
+  criterion   Criterion @relation(fields: [criterionId], references: [id])
+  option      Option    @relation(fields: [optionId], references: [id])
+}
