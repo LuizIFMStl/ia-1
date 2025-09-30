@@ -13,7 +13,7 @@ export class UpdateOptionRepository {
       name: data.name,
       description: data.description,
       scenario: {
-        connect: { id: data.screnarioId }, 
+        connect: { id: data.scenarioId }, 
       },
     },
   });

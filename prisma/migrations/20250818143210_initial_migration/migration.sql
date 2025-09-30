@@ -13,7 +13,7 @@ CREATE TABLE "public"."Option" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
-    "screnarioId" TEXT NOT NULL,
+    "scenarioId" TEXT NOT NULL,
 
     CONSTRAINT "Option_pkey" PRIMARY KEY ("id")
 );
@@ -39,7 +39,7 @@ CREATE TABLE "public"."Score" (
 );
 
 -- AddForeignKey
-ALTER TABLE "public"."Option" ADD CONSTRAINT "Option_screnarioId_fkey" FOREIGN KEY ("screnarioId") REFERENCES "public"."Scenario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."Option" ADD CONSTRAINT "Option_scenarioId_fkey" FOREIGN KEY ("scenarioId") REFERENCES "public"."Scenario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."Score" ADD CONSTRAINT "Score_optionId_fkey" FOREIGN KEY ("optionId") REFERENCES "public"."Option"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

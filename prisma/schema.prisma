@@ -19,8 +19,8 @@ model Option {
   id          String   @id @default(uuid())
   name        String
   description String?
-  screnarioId String
-  scenario    Scenario @relation(fields: [screnarioId], references: [id])
+  scenarioId String
+  scenario    Scenario @relation(fields: [scenarioId], references: [id])
   scores      Score[]
 }
 
